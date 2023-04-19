@@ -17,7 +17,8 @@ function App() {
    return (
       <div className='App'>
          <Cards characters={characters} />
-         <Nav onSearch = {onSearch}/> 
+         <Nav onSearch = {onSearch}/>
+         <h1></h1> 
       </div>
    );
 }
