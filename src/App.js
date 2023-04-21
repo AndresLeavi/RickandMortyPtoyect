@@ -1,24 +1,31 @@
 import './App.css';
-import Card from './components/Card.jsx';
+import axios from 'axios';
 import Cards from './components/Cards.jsx';
-import Nav from './components/nav';
+import Nav from "./components/Nav"
 import { useState } from 'react';
 
 function App() {
+   
+   const [characters, setCharacters] = useState([]);
 
-   const [characters, setcharacters] = useState([]);
-
-   const onSearch = () => {
-      // eslint-disable-next-line no-undef
-      setcharacters([...characters, example])
+   const onSearch = (id) => {
+      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+         if (data.name) {
+            setCharacters((oldChars) => [...oldChars, data]);
+         } else {
+            window.alert('¡No hay personajes con este ID!');
+         }
+      });
    }
 
-   // Cada vez que esta función sea ejecutada deberá agregar un nuevo personaje a tu estado local characters. Los tres putittos me van a permitir que se copie todo lo que ya estaba en array. 
+   const onClose = (id) => {
+      const characterFiltered = characters.filter(character => character.id !== +id)
+      setCharacters(characterFiltered)
+   }
    return (
       <div className='App'>
-         <Cards characters={characters} />
          <Nav onSearch = {onSearch}/>
-         <h1></h1> 
+         <Cards characters={characters} onClose={onClose} />
       </div>
    );
 }

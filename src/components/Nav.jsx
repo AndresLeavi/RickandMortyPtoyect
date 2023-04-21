@@ -1,4 +1,4 @@
-import SearchBar from '/SearchBar';
+import SearchBar from './SearchBar'
 
 
 const Nav = ({onSearch}) => {
@@ -6,7 +6,7 @@ const Nav = ({onSearch}) => {
     return (
         <div>
             <SearchBar onSearch = {onSearch}/>
-            <h1></h1>
+            
         </div>
     )
 }
