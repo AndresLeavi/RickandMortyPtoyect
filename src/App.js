@@ -1,6 +1,6 @@
 import './App.css';
 import axios from 'axios';
-import Cards from './components/Cards.jsx';
+import Cards from './components/Cards/Cards'
 import Nav from "./components/Nav"
 import { useState } from 'react';
 
